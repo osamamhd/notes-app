@@ -1,7 +1,13 @@
-notes-app
+Notes App
 ==============================
 
 Note Taking Web App.
+
+### Tools:
+- Django
+- Python
+- conda
+- Tailwind
 
 ### Quick setup
 
