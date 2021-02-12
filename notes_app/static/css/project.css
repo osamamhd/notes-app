@@ -11,3 +11,23 @@
   background-color: #f2dede;
   border-color: #eed3d7;
 }
+
+/* The Navigation bar style */
+a.dropdown-item {
+  color: #FFC930;
+}
+
+a.dropdown-item:hover {
+  background-color: #FFC930;
+  color: #212529;
+}
+
+ul.dropdown-menu.show {
+  border-color: #FFC930;
+  background-color: #212529;
+}
+
+hr.dropdown-divider {
+  color: #FFC930;
+  height: 2px;
+}
