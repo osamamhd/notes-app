@@ -7,7 +7,7 @@ Note Taking Web App.
 - Django
 - Python
 - conda
-- Tailwind
+- Bootstrap
 
 ### Quick setup
 
