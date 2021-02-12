@@ -3,6 +3,7 @@ Notes App
 
 Note Taking Web App.
 
+![ logo for notes ](logo.png?raw=true)
 ### Tools:
 - Django
 - Python
