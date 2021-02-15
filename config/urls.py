@@ -24,7 +24,7 @@ urlpatterns = [
         include("notes_app.users.urls", namespace="users"),
     ),
     path("accounts/", include("allauth.urls")),
-    path("note", include("note.urls")),
+    path("note/", include("note.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
