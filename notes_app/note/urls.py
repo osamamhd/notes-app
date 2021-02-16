@@ -15,6 +15,9 @@ urlpatterns = [
         route='<slug:slug>/', view=views.NoteDetailView.as_view(), name='detail'
     ),
     path(
+        route='update/<slug:slug>/', view=views.NoteUpdateView.as_view(), name='update'
+    ),
+    path(
         route='delete/<slug:slug>/', view=views.NoteDeleteView.as_view(), name='delete'
     ),
 ]
