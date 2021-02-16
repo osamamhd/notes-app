@@ -4,6 +4,7 @@
 
 {% block content %}
 <h2>Note List</h2>
+<a href="{% url 'note:new' %}"> Add note </a>
 
 <ul>
     {% for note in note_list %}
