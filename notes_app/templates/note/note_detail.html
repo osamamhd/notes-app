@@ -7,5 +7,5 @@
 <h2>{{ note.title }}</h2>
 <p>Contet: {{ note.content }}</p>
 <p>Created: {{ note.created }}</p>
-
+<a href="{% url 'note:delete' note.slug %}">Delete</a>
 {% endblock content %}
