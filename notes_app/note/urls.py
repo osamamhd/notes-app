@@ -14,5 +14,7 @@ urlpatterns = [
     path(
         route='<slug:slug>/', view=views.NoteDetailView.as_view(), name='detail'
     ),
-    
+    path(
+        route='delete/<slug:slug>/', view=views.NoteDeleteView.as_view(), name='delete'
+    ),
 ]
