@@ -7,7 +7,7 @@
 <h2>Note List</h2>
 <a href="{% url 'note:new' %}">Add note</a>
     {% for note in note_list %}
-    <div class="card text-dark bg-warning col-xs-12 col-ms-6 col-md-4  m-2" style="max-width: 22rem;">
+    <div class="card text-dark {{ note.color }} col-xs-12 col-ms-6 col-md-4  m-2" style="max-width: 22rem;">
         <div class="card-header">
             {{note.updated}}
             <a href="{% url 'note:update' note.slug %}">Update</a>
