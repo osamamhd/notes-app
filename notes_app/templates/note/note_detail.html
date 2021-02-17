@@ -5,8 +5,16 @@
 {% block content %}
 
 <h2>{{ note.title }}</h2>
-<p>Contet: {{ note.content }}</p>
-<p>Created: {{ note.created }}</p>
-<a href="{% url 'note:delete' note.slug %}">Delete</a>
-<a href="{% url 'note:update' note.slug %}">update</a>
+
+<div class="card text-dark {{note.color}} " >
+    <div class="card-header">
+        {{note.updated}}
+        <a href="{% url 'note:update' note.slug %}">Update</a>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{note.title}}</h5>
+      <p class="card-text">{{note.content}}</p>
+    </div>
+</div>
+
 {% endblock content %}
