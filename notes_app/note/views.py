@@ -18,11 +18,11 @@ class NoteDetailView(DetailView):
 
 class NoteCreateView(CreateView):
     model = Note
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'color']
 
 class NoteUpdateView(UpdateView):
     model = Note
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'color']
     template_name = 'note/note_update.html'
 
 class NoteDeleteView(DeleteView):
