@@ -21,6 +21,9 @@ class Note(models.Model):
     updated = models.DateTimeField(auto_now=True)
     color = models.CharField(max_length=1, choices=COLORS, default='a')
 
+    class Meta:
+        ordering = ['-updated']
+
     def __str__(self):
         return self.title
 

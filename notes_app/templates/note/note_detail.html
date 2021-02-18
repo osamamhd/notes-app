@@ -4,9 +4,7 @@
 
 {% block content %}
 
-<h2>{{ note.title }}</h2>
-
-<div class="card text-dark {{note.color}} " >
+<div class="card text-dark {{note.color}} m-5" >
     <div class="card-header">
         {{note.updated}}
         <a href="{% url 'note:update' note.slug %}">Update</a>

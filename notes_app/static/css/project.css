@@ -34,22 +34,39 @@ hr.dropdown-divider {
 
 .a {
   background-color: #FFC930;
+  color: #FFC930;
 }
 .b {
   background-color:#F97171;
+  color:#F97171;
 }
 .c {
   background-color:#2DD49C;
+  color:#2DD49C;
 }
 .d {
   background-color:#60A3F7;
+  color:#60A3F7;
 }
 .e {
   background-color:#8289F5;
+  color:#8289F5;
 }
 .f {
   background-color:#A888F7;
+  color:#A888F7;
 }
 .g {
   background-color:#F570B4;
+  color:#F570B4;
+}
+
+.icon {
+  width: 25px;
+  color:#352E3B;
+}
+
+.add-icon {
+  width: 40px;
+  color:#352E3B;
 }
