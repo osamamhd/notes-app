@@ -70,3 +70,21 @@ hr.dropdown-divider {
   width: 40px;
   color:#352E3B;
 }
+
+
+/* labels style */
+.home {
+  background-color: #93C4FB;
+}
+
+.office {
+  background-color:#C4B4FB;
+}
+
+.important {
+  background-color:#FDA5A5;
+}
+
+.personal {
+  background-color:#FDE78F;
+}
