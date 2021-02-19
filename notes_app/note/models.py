@@ -14,10 +14,10 @@ COLORS = (
 )
 
 LABELS = (
-    ('office', 'purle'),
-    ('important', 'red'),
-    ('home', 'blue'),
-    ('personal', 'yellow')
+    ('office', 'Office'),
+    ('important', 'Important'),
+    ('home', 'Home'),
+    ('personal', 'Personal')
 )
 
 class Note(models.Model):
