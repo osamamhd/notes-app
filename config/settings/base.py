@@ -81,7 +81,10 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "tailwind",
+    "theme",
 ]
+TAILWIND_APP_NAME = 'theme'
 
 LOCAL_APPS = [
     "notes_app.users.apps.UsersConfig",
