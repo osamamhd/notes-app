@@ -328,3 +328,4 @@ notes_app/media/
 *.sqlite
 *.sqlite3
 
+theme/static/css/styles.css
