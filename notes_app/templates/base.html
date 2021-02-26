@@ -1,132 +1,66 @@
+{% load static %}
 {% load static i18n %}<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}notes-app{% endblock title %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>{% block title %}Notes{% endblock title %}</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="author" content="">
 
-    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+		{% block css %}
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+		<link href="{% static 'css/project.css' %}" rel="stylesheet">
+		{% endblock %}
+	</head>
 
-    {% block css %}
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <!-- Your stuff: Third-party CSS libraries go here -->
-    <!-- This file stores project-specific CSS -->
+	<body>
+		<!-- navigation bar -->
+		<header class="w-full px-8 text-yellow-400 bg-gray-800 py-3 mx-auto" >
+			<div class="container flex flex-col flex-wrap items-center  py-1 mx-auto md:flex-row max-w-7xl">
+			  <div class="relative flex flex-col md:flex-row">
+				  <a href="{% url 'home' %}" class="flex items-center mb-3  font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0">
+					  <span class="mx-auto text-xl font-black leading-none text-gray-900 select-none"><img src="{% static 'images/logo.svg' %}" alt="logo"></span>
+				  </a>
+				  {% if request.user.is_authenticated %}
+				  <nav class="flex flex-wrap ml-10 items-center mb-3 text-base md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-yellow-400">
+					  <a href="{% url 'note:list' %}" class="no-underline mr-5 font-medium leading-6 text-yellow-400 hover:text-yellow-500">Notes</a>
+					  <a href="#_" class="no-underline mr-5 font-medium leading-6 text-yellow-400 hover:text-yellow-500">Profile</a>
+					  <a href="#_" class="no-underline mr-5 font-medium leading-6 text-yellow-400 hover:text-yellow-500">Add Note</a>
+				  </nav>
+			  </div>
 
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
-    {% endblock %}
+			  <div class="inline-flex items-center md:ml-auto space-x-6 lg:justify-end">
+				  <a href="#" class="no-underline text-base font-medium leading-6 border
+							   border-yellow-400 px-6 py-2 rounded-md text-yellow-400 
+							   whitespace-no-wrap transition duration-150 ease-in-out hover:text-yellow-500">
+					  Help
+				  </a>
+				  <span class="inline-flex rounded-md shadow-sm">
+					  <a href="{% url 'account_logout' %}" class="no-underline inline-flex items-center 
+										justify-center border
+										border-yellow-400 px-4 py-2 text-base font-medium leading-6 
+										text-gray-800 whitespace-no-wrap transition duration-150 ease-in-out 
+										bg-yellow-400 rounded-md hover:bg-yellow-500 
+										focus:outline-none focus:border-gray-700">
+						  Sign Out
+					  </a>
+				  </span>
+			  </div>
+			  {% else %}
+				<nav class="flex flex-wrap ml-10 items-center mb-3  text-base md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-yellow-400">
+					<a href="{% url 'account_login' %}" class="no-underline mr-5 font-medium leading-6 text-yellow-400 hover:text-yellow-500">Sign In</a>
+					<a href="{% url 'account_signup' %}" class="no-underline mr-5 font-medium leading-6 text-yellow-400 hover:text-yellow-500">Create Account</a>
+				</nav>
+			</div>
+		  </header>
+		  {% endif %}
 
-  </head>
-
-  <body>
-    <div class="bg-dark ">
-      <nav class="navbar container">
-        <div>
-          <a href="{% url 'home' %}"><img src="{% static 'images/logo.svg' %}" alt="Notes Logo"></a>
-        </div>
-        {% if request.user.is_authenticated %}
-          <li class="nav-item dropdown" style="list-style: none;">
-            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFC930;">
-              {{ request.user }}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
-              <li><a class="dropdown-item" href="{% url 'users:detail' request.user.username  %}">Your Profile</a></li>
-              <li><a class="dropdown-item" href="#">Your Notes</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a></li>
-            </ul>
-          </li>
-        {% else %}
-          <div>
-            <a href="{% url 'account_login' %}">
-              <button type="button" class="btn btn-outline-warning">Sign In</button>
-            </a>
-            <a href="{% url 'account_signup' %}">
-              <button type="button" class="btn btn-outline-warning">Sign Up</button>
-            </a>
-          </div>
-        {% endif %}
-      </nav>
-    </div>
-
-    <!-- <div class="mb-1">
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="{% url 'home' %}">notes-app</a>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}">About</a>
-            </li>
-            {% if request.user.is_authenticated %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
-              </li>
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
-              </li>
-            {% else %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
-              </li>
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
-              </li>
-            {% endif %}
-          </ul>
-        </div>
-      </nav>
-
-    </div> -->
-
-    <div class="container">
-
-      {% if messages %}
-          {% for message in messages %}
-              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
-          {% endfor %}
-      {% endif %}
-
-      {% block content %}
-        <p>Note Taking Web App. This text is inherited on other pages!</p>
-      {% endblock content %}
-
-    </div> <!-- /container -->
-
-    {% block modal %}{% endblock modal %}
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    {% block javascript %}
-      <!-- Bootstrap JS and its dependencies-->
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-      <!-- Your stuff: Third-party javascript libraries go here -->
-
-
-      <!-- place project specific Javascript in this file -->
-      <script src="{% static 'js/project.js' %}"></script>
-    {% endblock javascript %}
-  </body>
+		{% block content %}
+      	{% endblock content %}
+		
+	</body>
 </html>
- 
