@@ -3,12 +3,12 @@
 {% load i18n %}
 {% load account socialaccount %}
 {% load crispy_forms_tags %}
+{% load tailwind_filters %}
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block inner %}
-
-<h1>{% trans "Sign In" %}</h1>
+<div class='bg-yellow-400 h-screen'>
 
 {% get_providers as socialaccount_providers %}
 
@@ -30,19 +30,25 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 {% include "socialaccount/snippets/login_extra.html" %}
 
 {% else %}
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+
 {% endif %}
 
-<form class="login" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-  {{ form|crispy }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  <button class="primaryAction btn btn-primary" type="submit">{% trans "Sign In" %}</button>
-</form>
+<div class="flex justify-center ">
+  <form class="m-20 border-4 border-gray-800 rounded-xl py-5 md:py-10 px-3 md:px-20" method="POST" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    <div class="w-72 md:w-96">
+    {{ form|crispy }}
+    </div>
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <a class="text-base" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+    <button class="bg-gray-800 text-white py-2 px-4 rounded-lg ml-12 md:ml-36 hover:bg-gray-900" type="submit">{% trans "Sign In" %}</button>
+    <p class="text-xs mt-6">{% blocktrans %}If you have not created an account yet, then please
+      <a class="text-gray-900 underline" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+    </div>
+  </form>
+</div>
 
 {% endblock %}
 
